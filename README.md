@@ -4,9 +4,8 @@
 * 基础环境搭建  
  基本环境的搭建，包括在windows以及基于Unix的Mac OS  
   **Windows：**  
-    1、 
-    >dswda
-    >svev
+    >1、 
+    dswda
   **Mac OS：**  
     1、  
 * 基础语法
