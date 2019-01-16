@@ -1,0 +1,43 @@
+#关于字典 dict 和 set 的使用
+##字典 dict ：使用键-值（key-value）进行存储，有极快的查找速度
+### key:value 一一对应，查找时输入key，可以立即查找到value
+dic = {'A':111,'B':222,'C':333,'D':444}
+print(dic['A'])
+print(dic)
+###当想增加键值对时，直接将增加的键值对赋值即可
+dic['E'] = 888
+print("赋值增加键值对E：%s"%(dic))
+###想删除键值对时使用 del dic[key] 就可以删除该键值对或者用pop方法
+del dic['C']
+print("del方式删除C：%s"%(dic))
+
+dic.pop('D')
+print("pop方式删除D：%s"%(dic))
+
+###对于字典的重新赋值：
+dic['B'] = 999
+print("对B键值对进行重赋值：%s"%(dic))
+
+###为了避免 key 值不存在，可以使用两种方法一是通过 in 判断 key、而是通过 dict 中的 get() 方法
+print('F' in dic)
+print(dic.get('F', -1 ))
+
+## set 与dict类似，但是 set 不存储value
+### set 可以过滤掉 list 中的重复内容
+sets = set([1,1,1,2,2,3,4,5,6,6,6,7])
+print(sets)
+
+###在set中增加 key ，可以使用add（key）添加，如果添加重复 key 将没有任何效果
+sets.add(9)
+print("在set中添加新的key：9:：%s"%(sets))
+
+###删除某一个 key 的方法：.remove(key)
+sets.remove(2)
+print("删除key值：2：%s"%(sets))
+
+### set 可以进行逻辑运算，&、|
+s1 = set([1,2,3])
+s2 = set([2,3,4])
+print(s1 & s2)
+print(s1 | s2)
+
