@@ -1,3 +1,142 @@
-# 数据类型
-# 条件判断
-# 循环
+#数据类型：
+###Python是一种动态语言，变量的赋值，可以是任意一种存在的数据类型,无需单独为变量指定类型
+###a为int型、b为字符串、c为布尔型、d为浮点型
+a = 100
+b = "hello "
+c = True
+d = 0.123
+print(a,b,c,d)
+print(type(a),type(b),type(c),type(d))
+print(len(b))     #获得字符串的字符长度，每一个空格都算一个字符
+
+##变量与常亮
+###在Python中，将需要定义为常量的数据用全大写字母表示,但是，在Python中，常量并不能得到有效的保护，常量的值是可以进行改变的
+PI = 3.1415926
+print(PI)
+###修改已经定义过得常量
+PI = 9.99999 
+print(PI)
+
+##字符编码问题：
+###decode('utf-8')
+
+##字符格式化输出：%d 表示整数占位输出，当不确定应该使用%s、%f、还是%d时，可以直接使用%s，
+print("%s world %d 次 是 %s 的，平均只有 %f 次" % (b,a,c,d))   #对应数据类型
+print("%s world %s 次 是 %s 的，平均只有 %s 次" % (b,a,c,d))   #统一使用%s
+###如果想在程序中表示%，则需要使用%%来进行表示
+print('工资上涨比率：%d %%' % (a+1900))
+###在上面一句代码中、第一个%d表示占位符，%%表示需要打印一个百分号%，最后一个%表示占位符的数据源
+
+##数据类型list（列表） 以及tuple（元组）
+numlist = [123,456,789]
+print(numlist)        #打印list
+print(len(numlist))   #获取list的长度，list的长度取决于该list有多少个元素
+###可以使用索引来访问list中的元素,编号由 0 开始，取最后一个元素，可以使用 len(numlist)-1 作为角标
+###熟练后可以直接使用负数表示倒数的元素
+print(numlist[0],numlist[2],numlist[len(numlist)-1],numlist[-2])
+
+###向list末尾添加元素 .append()
+numlist.append(999)
+print(numlist)
+
+###向list中某一位置添加元素 .insert(角标,元素)
+numlist.insert(2,888)
+print(numlist)
+
+###删除list末尾元素   .pop()
+numlist.pop()
+print(numlist)
+
+###删除list指定位置元素   .pop(元素角标)
+numlist.pop(2)
+print(numlist)
+
+###替换list元素可以直接对该元素进行重新赋值
+numlist[0] = 111
+print(numlist)
+
+###list 中元素类型可以不同
+strlist = [123,'abc',12.34,True]
+print(strlist)
+
+###list 中也可以有另一个list  可以看成二维数组
+s = [123,456,[111,222],789]
+print(s)
+
+##tuple 元组：不能修改的list tuple在建立时，就需要将全部的元素确定下来
+numtuple = (111,444,777)
+print(numtuple)
+###当在元组里面加入一个list时，可以使用list的方法进行值的修改。
+
+
+#条件判断：     if 条件1： 执行语句1  elif 条件2：执行语句2 else：执行语句3 
+##if：条件判断 
+###注意每一个条件之后都应该包含一个冒号。且执行语句相对于if、elif、else必须要有代码上的缩进。
+age = 18
+if age >= 18:
+	print('18')
+elif age > 9:
+	print('9')
+else:
+	print('1')
+###当判断条件内容为布尔类型或者是非零数值、非空字符串、非空list等，就判断为True，否则为False
+###可以简写if语句为如下
+if age:
+	print('True')
+
+##if语句使用的注意项：
+###当用户使用了input()函数时，需要注意判断格式，input()函数读取的用户输入为str类型，如果是其他类型，需要进行格式转换
+###	x = input()
+###将输入的数据转化为整型
+birth = 2100
+if birth >2000:
+	print('3000')
+else:
+	print('1000')
+
+#循环
+##Python有两种循环，for...in循环 以及 while 循环
+###for...in循环： 这种循环用于遍历 list 内数据，其执行方式是将 list 中每个元素都带入条件执行缩进代码
+numsum = 0
+for x in [1,2,3,4,5,6,7,8,9,10]:
+	numsum = numsum + x
+print(numsum)
+
+## while 循环： while 条件判断：执行语句
+###此循环在条件满足的情况下会一直循环，因此在使用中需要注意不要发生死循环
+add = 0
+n = 0
+while n < 100:
+	add = add + n
+	n = n + 1
+print("add============%d"%(add))
+
+
+##range()函数：此函数可以自动生成一个整数队列、range(15)表示生成由开始小于15的全部整数
+rangelist = list(range(15))
+print(rangelist)
+numsum = 0
+for x in rangelist:
+	numsum = numsum + x
+print(numsum)
+
+## break 函数与 continue 函数
+###这两个函数均用于提前中断循环或者跳过循环
+### break 函数会中断循环，当触发 break 函数时，循环将直接跳出
+n = 0
+while n < 100:
+	if n == 15:
+		break
+	print(n)
+	n = n + 1
+print('end')
+
+### continue 函数会跳过当前循环，直接开始下一循环，并不会直接中断循环
+### 在使用 continue 时，需要注意判断变量的值，当跳过语句时，如果跳过了计数器的变值语句，会导致程序bug
+k = 0
+while k < 100:
+	k = k + 1
+	if k % 2 == 0:
+		continue
+	print(k)
+	
